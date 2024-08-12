@@ -1,0 +1,497 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2024.1" RunE2="T">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="JupyterCode">
+        <Position x="54" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <WorkflowName>c:\users\osabn\onedrive\desktop\ishares ivv etf s&amp;p 500 analysis.yxmd</WorkflowName>
+          <JupyterProduction>false</JupyterProduction>
+          <vEnvName>designerbasetools_venv</vEnvName>
+          <DefaultVenv>1</DefaultVenv>
+          <productionModeScript />
+          <Port>50283</Port>
+          <JupyterGuidDir>a2192d8e99458b9b8e436052de782fa6</JupyterGuidDir>
+          <JupyterGuidCopy />
+          <LastExecutedByEngineVersion>2024.1.1.93</LastExecutedByEngineVersion>
+          <Notebook><![CDATA[{"cells":[{"cell_type":"markdown","metadata":{"ayx":{"cell_css":"border: 3px solid #357; margin: 4px; background: #fbffff","contents_keyword":"Alteryx.help()","label":"info"}},"source":["Run `Alteryx.help()` for info about useful functions.  \n","i.e., `Alteryx.read(\"#1\")`, `Alteryx.write(df,1)`, `Alteryx.getWorkflowConstant(\"Engine.WorkflowDirectory\")`"]},{"cell_type":"code","execution_count":1,"metadata":{"ayx":{"cell_css":"border: 1px solid #58a; margin: 2px;","contents_keyword":"installPackages","label":"deps"},"execution":{"iopub.execute_input":"2024-08-12T21:00:02.557920Z","iopub.status.busy":"2024-08-12T21:00:02.557920Z","iopub.status.idle":"2024-08-12T21:00:06.119786Z","shell.execute_reply":"2024-08-12T21:00:06.119786Z"}},"outputs":[],"source":["# List all non-standard packages to be imported by your \n","# script here (only missing packages will be installed)\n","from ayx import Package\n","#Package.installPackages(['pandas','numpy'])\n","Package.installPackages(['yfinance'])"]},{"cell_type":"code","execution_count":2,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:06.151499Z","iopub.status.busy":"2024-08-12T21:00:06.151499Z","iopub.status.idle":"2024-08-12T21:00:08.722228Z","shell.execute_reply":"2024-08-12T21:00:08.722228Z"}},"outputs":[],"source":["#Connnecting Alteryx engine to Python\n","#Importing relevant libraries\n","from ayx import Alteryx\n","import pandas as pd\n","import numpy as np\n","import yfinance as yf\n","import matplotlib.pyplot as plt\n","from datetime import datetime, timedelta"]},{"cell_type":"code","execution_count":3,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:08.722228Z","iopub.status.busy":"2024-08-12T21:00:08.722228Z","iopub.status.idle":"2024-08-12T21:00:10.811993Z","shell.execute_reply":"2024-08-12T21:00:10.811993Z"}},"outputs":[],"source":["#Fetching IVV iShares S&P 500 ETF data from the internet\n","#Data range is five years from the date of execution\n","\n","#iShares S&P 500 ETF Ticker\n","ticker='IVV'\n","#Today's date (Date of Execution)\n","end_date=datetime.today()\n","#Subtracting five years from today's date\n","start_date=end_date-timedelta(days=5*365)\n","#Downloading 'IVV' data from the internet\n","data=yf.download(ticker, start=start_date, end=end_date)\n","#Dropping null values\n","data=data.dropna()\n","#Assigning data to output variable\n","output_df=data\n","#Resetting index of dataframe\n","output_df.reset_index(inplace=True)\n","#Output to first connection of Alteryx\n","Alteryx.write(output_df,1)"]},{"cell_type":"code","execution_count":4,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:10.827943Z","iopub.status.busy":"2024-08-12T21:00:10.811993Z","iopub.status.idle":"2024-08-12T21:00:10.843481Z","shell.execute_reply":"2024-08-12T21:00:10.843481Z"}},"outputs":[],"source":["type(output_df)"]},{"cell_type":"code","execution_count":5,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:10.843481Z","iopub.status.busy":"2024-08-12T21:00:10.843481Z","iopub.status.idle":"2024-08-12T21:00:10.890122Z","shell.execute_reply":"2024-08-12T21:00:10.890122Z"}},"outputs":[],"source":["output_df"]},{"cell_type":"code","execution_count":null,"metadata":{},"outputs":[],"source":[]}],"metadata":{"kernelspec":{"display_name":"designerbasetools_venv","language":"python","name":"designerbasetools_venv"},"language_info":{"codemirror_mode":{"name":"ipython","version":3},"file_extension":".py","mimetype":"text/x-python","name":"python","nbconvert_exporter":"python","pygments_lexer":"ipython3","version":"3.10.13"}},"nbformat":4,"nbformat_minor":2}]]></Notebook>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxJupyterPluginEngine.dll" EngineDllEntryPoint="AlteryxJupyter" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="138" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\osabn\AppData\Local\Temp\Alteryx\Engine_8480_2f4f624be40a4477ae208e713b4eddb3_\Engine_8480_0ef4d55f85e5e14085a60d524e42ef5a~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings>
+        <Position x="138" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Check Box (135)">True</Value>
+          <Value name="Check Box (136)">True</Value>
+          <Value name="List Box (11)">""</Value>
+          <Value name="Check Box (84)">False</Value>
+          <Value name="Check Box (117)">False</Value>
+          <Value name="Check Box (15)">True</Value>
+          <Value name="Check Box (109)">False</Value>
+          <Value name="Check Box (122)">False</Value>
+          <Value name="Check Box (53)">False</Value>
+          <Value name="Check Box (58)">False</Value>
+          <Value name="Check Box (70)">False</Value>
+          <Value name="Check Box (77)">False</Value>
+          <Value name="Drop Down (81)">upper</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="Cleanse.yxmc" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+        <Position x="210" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <UniqueFields>
+            <Field field="Date" />
+          </UniqueFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+    </Node>
+    <Node ToolID="12">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="294" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\osabn\AppData\Local\Temp\Alteryx\Engine_8480_2f4f624be40a4477ae208e713b4eddb3_\Engine_8480_215ae8ecb1082f43a51500ee306c0f05~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="13">
+      <GuiSettings Plugin="JupyterCode">
+        <Position x="294" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Notebook><![CDATA[{"cells":[{"cell_type":"markdown","metadata":{"ayx":{"cell_css":"border: 3px solid #357; margin: 4px; background: #fbffff","contents_keyword":"Alteryx.help()","label":"info"}},"source":["Run `Alteryx.help()` for info about useful functions.  \n","i.e., `Alteryx.read(\"#1\")`, `Alteryx.write(df,1)`, `Alteryx.getWorkflowConstant(\"Engine.WorkflowDirectory\")`"]},{"cell_type":"code","execution_count":1,"metadata":{"ayx":{"cell_css":"border: 1px solid #58a; margin: 2px;","contents_keyword":"installPackages","label":"deps"},"execution":{"iopub.execute_input":"2024-08-12T21:00:19.253237Z","iopub.status.busy":"2024-08-12T21:00:19.253237Z","iopub.status.idle":"2024-08-12T21:00:20.347467Z","shell.execute_reply":"2024-08-12T21:00:20.347467Z"}},"outputs":[],"source":["# List all non-standard packages to be imported by your \n","# script here (only missing packages will be installed)\n","from ayx import Package\n","import pandas as pd\n","#Package.installPackages(['pandas','numpy'])"]},{"cell_type":"code","execution_count":2,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:20.347467Z","iopub.status.busy":"2024-08-12T21:00:20.347467Z","iopub.status.idle":"2024-08-12T21:00:20.507908Z","shell.execute_reply":"2024-08-12T21:00:20.507908Z"}},"outputs":[],"source":["from ayx import Alteryx\n","data_cleaned=Alteryx.read(\"#1\")\n"]},{"cell_type":"code","execution_count":3,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:20.507908Z","iopub.status.busy":"2024-08-12T21:00:20.507908Z","iopub.status.idle":"2024-08-12T21:00:20.571576Z","shell.execute_reply":"2024-08-12T21:00:20.571576Z"}},"outputs":[],"source":["data_cleaned"]},{"cell_type":"code","execution_count":4,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:20.587680Z","iopub.status.busy":"2024-08-12T21:00:20.587680Z","iopub.status.idle":"2024-08-12T21:00:20.634706Z","shell.execute_reply":"2024-08-12T21:00:20.634706Z"}},"outputs":[],"source":["#Calculate Daily Return\n","data_cleaned['Daily Return']=data_cleaned['Adj Close'].pct_change()\n","#Calculate Volatility\n","volatility=data_cleaned['Daily Return'].std()*(252**0.5)\n","#Calculate VaR\n","confidence_level=0.95\n","var=data_cleaned['Daily Return'].quantile(1-confidence_level)\n","var_final=round(abs(var*100),2)\n","#Calculate Expected Shortfall\n","es=data_cleaned[data_cleaned['Daily Return']<= var]['Daily Return'].mean()\n","es_final=round(abs(es*100),2)\n","#Calculate Sharpe Ratio\n","risk_free_rate=0.005/252\n","mean_return=data_cleaned['Daily Return'].mean()\n","std_dev=data_cleaned['Daily Return'].std()\n","sharpe_ratio=(mean_return-risk_free_rate)/std_dev*(252**0.5)\n","sharpe_ratio_final=round(abs(sharpe_ratio*100),2)\n","#Calculate Max Drawdown\n","data_cleaned['Cumulative Return']=(1+data_cleaned['Daily Return']).cumprod()\n","data_cleaned['Cumulative Max']=data_cleaned['Cumulative Return'].cummax()\n","data_cleaned['Drawdown']=data_cleaned['Cumulative Return']-data_cleaned['Cumulative Max']\n","max_drawdown=data_cleaned['Drawdown'].min()\n","max_drawdown_final=round(abs(max_drawdown*100),2)\n"]},{"cell_type":"code","execution_count":5,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:20.634706Z","iopub.status.busy":"2024-08-12T21:00:20.634706Z","iopub.status.idle":"2024-08-12T21:00:20.682851Z","shell.execute_reply":"2024-08-12T21:00:20.682851Z"}},"outputs":[],"source":["#Drop null values\n","data_cleaned=data_cleaned.dropna()\n","#Create a dataframe with risk metrics\n","analysis=pd.DataFrame({'VaR':[var_final],'Expected Shortfall':[es_final],\n","                       'Sharpe Ratio':[sharpe_ratio_final],\n","                      'Maximum Drawdown':[max_drawdown_final]})\n","print(analysis)"]},{"cell_type":"code","execution_count":6,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:20.698881Z","iopub.status.busy":"2024-08-12T21:00:20.682851Z","iopub.status.idle":"2024-08-12T21:00:20.762343Z","shell.execute_reply":"2024-08-12T21:00:20.762343Z"}},"outputs":[],"source":["#Export the risk dataframe to Alteryx\n","Alteryx.write(analysis,1)"]},{"cell_type":"code","execution_count":7,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:20.762343Z","iopub.status.busy":"2024-08-12T21:00:20.762343Z","iopub.status.idle":"2024-08-12T21:00:20.825616Z","shell.execute_reply":"2024-08-12T21:00:20.825616Z"},"scrolled":true},"outputs":[],"source":["#Converted pandas data series into pandas dataframe\n","#Alteryx can only read pandas dataframe\n","data_cleaned_df=pd.DataFrame(data_cleaned['Daily Return'])\n","type(data_cleaned_df)\n","#Exporting Daily Return to Alteryx\n","Alteryx.write(data_cleaned_df,2)\n","\n"]},{"cell_type":"code","execution_count":8,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:20.841757Z","iopub.status.busy":"2024-08-12T21:00:20.825616Z","iopub.status.idle":"2024-08-12T21:00:20.906061Z","shell.execute_reply":"2024-08-12T21:00:20.906061Z"}},"outputs":[],"source":["es_hist=pd.DataFrame()\n","es_hist['returns']=data_cleaned[data_cleaned['Daily Return']<var]['Daily Return'].copy()\n","es_hist['es']=es\n","es_hist\n","Alteryx.write(es_hist,3)"]},{"cell_type":"code","execution_count":9,"metadata":{"execution":{"iopub.execute_input":"2024-08-12T21:00:20.922312Z","iopub.status.busy":"2024-08-12T21:00:20.906061Z","iopub.status.idle":"2024-08-12T21:00:20.984390Z","shell.execute_reply":"2024-08-12T21:00:20.984390Z"}},"outputs":[],"source":["cr_drawdown=pd.DataFrame()\n","cr_drawdown['Date']=data_cleaned['Date'].copy()\n","cr_drawdown['Cumulative Return']=data_cleaned['Cumulative Return'].copy()\n","cr_drawdown['Drawdown']=data_cleaned['Drawdown'].copy()\n","cr_drawdown\n","Alteryx.write(cr_drawdown,4)"]}],"metadata":{"kernelspec":{"display_name":"designerbasetools_venv","language":"python","name":"designerbasetools_venv"},"language_info":{"codemirror_mode":{"name":"ipython","version":3},"file_extension":".py","mimetype":"text/x-python","name":"python","nbconvert_exporter":"python","pygments_lexer":"ipython3","version":"3.10.13"}},"nbformat":4,"nbformat_minor":2}]]></Notebook>
+          <WorkflowName>c:\users\osabn\onedrive\desktop\ishares ivv etf s&amp;p 500 analysis.yxmd</WorkflowName>
+          <JupyterProduction>false</JupyterProduction>
+          <vEnvName>designerbasetools_venv</vEnvName>
+          <DefaultVenv>1</DefaultVenv>
+          <productionModeScript />
+          <Port>50192</Port>
+          <JupyterGuidDir>8567b24c49953cbe5033094f0e6b7935</JupyterGuidDir>
+          <JupyterGuidCopy />
+          <LastExecutedByEngineVersion>2024.1.1.93</LastExecutedByEngineVersion>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output1">
+          <RecordInfo>
+            <Field name="VaR" source="PythonTool:" type="Double" />
+            <Field name="Expected Shortfall" source="PythonTool:" type="Double" />
+            <Field name="Sharpe Ratio" source="PythonTool:" type="Double" />
+            <Field name="Maximum Drawdown" source="PythonTool:" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+        <MetaInfo connection="Output2">
+          <RecordInfo>
+            <Field name="Daily Return" source="PythonTool:" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+        <MetaInfo connection="Output3">
+          <RecordInfo>
+            <Field name="returns" source="PythonTool:" type="Double" />
+            <Field name="es" source="PythonTool:" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+        <MetaInfo connection="Output4">
+          <RecordInfo>
+            <Field name="Date" source="PythonTool:" type="Date" />
+            <Field name="Cumulative Return" source="PythonTool:" type="Double" />
+            <Field name="Drawdown" source="PythonTool:" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxJupyterPluginEngine.dll" EngineDllEntryPoint="AlteryxJupyter" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="366" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False">
+            <Field name="VaR" />
+            <Field name="Expected Shortfall" />
+            <Field name="Sharpe Ratio" />
+            <Field name="Maximum Drawdown" />
+          </GroupingFields>
+          <Width />
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="VaR" selected="True" Alignment="Right" Places="2" />
+            <Field name="Expected Shortfall" selected="True" Alignment="Right" Places="2" />
+            <Field name="Sharpe Ratio" selected="True" Alignment="Right" Places="2" />
+            <Field name="Maximum Drawdown" selected="True" Alignment="Right" Places="2" />
+            <Field name="*Unknown" selected="True" Alignment="Right" Places="2" Width="" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Risk Table</Name>
+          <AnnotationText><![CDATA[Risk Metrics Table
+]]></AnnotationText>
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="19">
+      <GuiSettings>
+        <Position x="366" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="field">Daily Return</Value>
+          <Value name="notauto">False</Value>
+          <Value name="breaks">5</Value>
+          <Value name="density">False</Value>
+          <Value name="scale">2.0</Value>
+          <Value name="inches">True</Value>
+          <Value name="in.w">5.75</Value>
+          <Value name="in.h">5.75</Value>
+          <Value name="centimeters">False</Value>
+          <Value name="cm.w">13.00</Value>
+          <Value name="cm.h">14.95</Value>
+          <Value name="graph.resolution">1x</Value>
+          <Value name="pointsize">15</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="Predictive Tools\Histogram.yxmc" />
+    </Node>
+    <Node ToolID="20">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerRender.PortfolioComposerRender">
+        <Position x="450" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFileType>pdf</TempFileType>
+          <BatchMode value="False" />
+          <DataField>Report</DataField>
+          <Separator>Continuous</Separator>
+          <EmbedDependencies value="False" />
+          <ShowHeader value="False" />
+          <ShowFooter value="False" />
+          <PdfCefOutput value="False" />
+          <PortraitMode value="True" />
+          <PaperType Width="612" Height="792" Left="36" Right="36" Top="36" Bottom="36" />
+          <DefaultStyles>
+            <Style Name="TextStyle" FontName="Arial" FontSize="14" Justify="Left" ForeColor="#000000" Locale="1033" />
+          </DefaultStyles>
+          <PNGResolution>1</PNGResolution>
+          <PNGLargerAction>squeeze</PNGLargerAction>
+          <PNGLargerThanPageChoice>warning</PNGLargerThanPageChoice>
+          <PNGTransparentBG value="False" />
+          <PNGBackColor value="#ffffff" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerRenderPlugin" />
+    </Node>
+    <Node ToolID="27">
+      <GuiSettings Plugin="PlotlyCharting">
+        <Position x="462" y="174" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ChartingFields>
+            <Traces>
+              <type>bar</type>
+              <mode>lines</mode>
+              <xsrc>Date</xsrc>
+              <ysrc>Drawdown</ysrc>
+              <name>Max Drawdown&lt;br&gt;</name>
+              <marker>
+                <size>8</size>
+                <line>
+                  <width>0</width>
+                </line>
+                <color>rgb(198, 60, 36)</color>
+              </marker>
+              <orientation>v</orientation>
+              <textposition>None</textposition>
+            </Traces>
+            <Traces>
+              <orientation>v</orientation>
+              <type>bar</type>
+              <xsrc>Date</xsrc>
+              <ysrc>Cumulative Return</ysrc>
+              <name>Cumulative Return</name>
+              <textposition>None</textposition>
+              <marker>
+                <line>
+                  <width>0</width>
+                </line>
+                <color>rgb(53, 181, 59)</color>
+              </marker>
+            </Traces>
+            <Layout>
+              <title>
+                <text>
+                </text>
+              </title>
+              <font>
+                <family>sans-serif</family>
+                <size>12</size>
+              </font>
+              <autosize>false</autosize>
+              <width>700</width>
+              <height>849</height>
+              <showlegend>true</showlegend>
+              <hovermode>closest</hovermode>
+              <dragmode>zoom</dragmode>
+              <xaxis>
+                <range>2012-01-26 09:02:15.7868</range>
+                <range>2030-06-08 20:49:11.5144</range>
+                <autorange>false</autorange>
+                <title>
+                  <text>Date</text>
+                </title>
+                <tickfont>
+                  <size>12</size>
+                </tickfont>
+                <nticks>0</nticks>
+                <showline>true</showline>
+                <showspikes>false</showspikes>
+                <type>date</type>
+              </xaxis>
+              <yaxis>
+                <range>-1.8371501522283893</range>
+                <range>4.40500406078356</range>
+                <autorange>false</autorange>
+                <title>
+                  <text>Daily Return &amp;amp; Max Drawdown</text>
+                </title>
+                <showspikes>false</showspikes>
+                <type>linear</type>
+              </yaxis>
+              <margin>
+                <pad>0</pad>
+                <t>100</t>
+                <b>80</b>
+                <l>80</l>
+                <r>80</r>
+              </margin>
+              <legend>
+                <font>
+                  <size>12</size>
+                </font>
+                <borderwidth>0</borderwidth>
+                <x>0.69187958883994094</x>
+                <y>0.48729446935724963</y>
+              </legend>
+            </Layout>
+          </ChartingFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="ComposerInteractiveCharting" />
+    </Node>
+    <Node ToolID="28">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="378" y="174" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="Date" action="GroupBy" rename="Date" />
+            <SummarizeField field="Cumulative Return" action="GroupBy" rename="Cumulative Return" />
+            <SummarizeField field="Drawdown" action="GroupBy" rename="Drawdown" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output1" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="1" Connection="Output1" />
+      <Destination ToolID="3" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output26" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Unique" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="4" Connection="Unique" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output1" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output2" />
+      <Destination ToolID="19" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output4" />
+      <Destination ToolID="28" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="19" Connection="Output" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="28" Connection="Output" />
+      <Destination ToolID="27" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <IsTemplate value="False" />
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>iShares IVV ETF S&amp;P 500 Analysis</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="4ff5c61d-0fb9-4c64-b78d-42e3fd520935" />
+      <Telemetry>
+        <PreviousWorkflowId value="3ae256a8-0ab9-4f46-ba69-f9bdaf6b85d7" />
+        <OriginWorkflowId value="3ae256a8-0ab9-4f46-ba69-f9bdaf6b85d7" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
