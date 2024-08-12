@@ -68,3 +68,6 @@ Histogram representing Moving Average Return
 
 Bar Chart Displaying Max Drawdown and Moving Average Return
 <img width="1130" alt="Screenshot 2024-08-12 at 4 59 20 PM" src="https://github.com/user-attachments/assets/93302805-3050-4da6-8f5c-9fb0cb8712ff">
+
+Risk Metrics
+<img width="359" alt="Screenshot 2024-08-12 at 5 46 48 PM" src="https://github.com/user-attachments/assets/3a121734-752f-4e55-ba64-be9d6d709a65">
